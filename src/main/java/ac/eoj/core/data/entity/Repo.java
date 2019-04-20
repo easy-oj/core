@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "ENTITY__REPO")
+@Table(name = "tb_repo")
 public class Repo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

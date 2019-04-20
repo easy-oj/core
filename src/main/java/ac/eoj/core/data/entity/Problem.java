@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Data
 @Entity
-@Table(name = "ENTITY__PROBLEM")
+@Table(name = "tb_problem")
 public class Problem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

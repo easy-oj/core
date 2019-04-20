@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "ENTITY__SUBMISSION")
+@Table(name = "tb_submission")
 public class Submission {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

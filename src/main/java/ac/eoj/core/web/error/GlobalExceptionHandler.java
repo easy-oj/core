@@ -12,7 +12,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import javax.servlet.http.HttpServletResponse;
 
-@RestControllerAdvice("com.moekr.eoj.core.web.controller.api")
+@RestControllerAdvice("ac.eoj.core.web.controller")
 public class GlobalExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	@ResponseBody
@@ -24,7 +24,6 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(ServiceException.class)
 	@ResponseBody
 	public Response handleServiceException(HttpServletResponse response, ServiceException exception) {
-		exception.printStackTrace();
 		return handle(response, HttpStatus.valueOf(exception.getCode()), exception.getMessage());
 	}
 

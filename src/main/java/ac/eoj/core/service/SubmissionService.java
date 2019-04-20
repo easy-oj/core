@@ -1,11 +1,13 @@
 package ac.eoj.core.service;
 
+import ac.eoj.core.data.dao.SubmissionDAO;
+import ac.eoj.core.data.dao.UserDAO;
+import ac.eoj.core.data.entity.Submission;
+import ac.eoj.core.data.entity.User;
 import ac.eoj.core.object.BaseSubmissionVO;
+import ac.eoj.core.object.SubmissionVO;
 import ac.eoj.core.util.Assert;
 import ac.eoj.proto.common.Common;
-import ac.eoj.core.data.dao.SubmissionDAO;
-import ac.eoj.core.data.entity.Submission;
-import ac.eoj.core.object.SubmissionVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,16 +19,20 @@ import org.springframework.stereotype.Service;
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class SubmissionService {
 	private static final Sort PAGE_SORT = Sort.by(Sort.Direction.DESC, "id");
 
 	private final SubmissionDAO submissionDAO;
+	private final UserDAO userDAO;
 
 	@Autowired
-	public SubmissionService(SubmissionDAO submissionDAO) {
+	public SubmissionService(SubmissionDAO submissionDAO, UserDAO userDAO) {
 		this.submissionDAO = submissionDAO;
+		this.userDAO = userDAO;
 	}
 
 	public SubmissionVO retrieve(int uid, int sid) {
@@ -38,7 +44,6 @@ public class SubmissionService {
 
 	public Page<BaseSubmissionVO> retrievePage(Integer uid, Integer pid, Integer lid, Common.SubmissionStatus status, int page, int limit) {
 		Pageable pageable = PageRequest.of(page, limit, PAGE_SORT);
-
 		Specification<Submission> specification = (Specification<Submission>) (root, query, criteriaBuilder) -> {
 			List<Predicate> predicates = new ArrayList<>();
 			if (uid != null) {
@@ -55,6 +60,13 @@ public class SubmissionService {
 			}
 			return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 		};
-		return submissionDAO.findAll(specification, pageable).map(BaseSubmissionVO::new);
+		Page<BaseSubmissionVO> submissions = submissionDAO.findAll(specification, pageable).map(BaseSubmissionVO::new);
+		if (submissions.isEmpty()) {
+			return submissions;
+		}
+		List<Integer> userIds = submissions.stream().map(BaseSubmissionVO::getUid).distinct().collect(Collectors.toList());
+		Map<Integer, String> idToUsername = userDAO.findAllById(userIds).stream().collect(Collectors.toMap(User::getId, User::getUsername));
+		submissions.forEach(s -> s.setUsername(idToUsername.get(s.getUid())));
+		return submissions;
 	}
 }

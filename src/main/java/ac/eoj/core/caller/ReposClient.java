@@ -1,8 +1,8 @@
 package ac.eoj.core.caller;
 
+import ac.eoj.core.util.settings.Settings;
 import ac.eoj.proto.repos.Repos;
 import ac.eoj.proto.repos.ReposServiceGrpc;
-import ac.eoj.core.util.settings.Settings;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import lombok.extern.apachecommons.CommonsLog;

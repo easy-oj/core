@@ -3,6 +3,7 @@ package ac.eoj.core.object;
 import ac.eoj.core.data.entity.Submission;
 import ac.eoj.core.web.serializer.TimestampLocalDateTimeSerializer;
 import ac.eoj.proto.common.Common;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,8 @@ import java.time.LocalDateTime;
 public class BaseSubmissionVO {
 	private Integer id;
 	private Integer uid;
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	private String username;
 	private Integer pid;
 	private Integer lid;
 	@JsonSerialize(using = TimestampLocalDateTimeSerializer.class)

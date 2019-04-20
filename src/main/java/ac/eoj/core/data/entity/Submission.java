@@ -1,8 +1,8 @@
 package ac.eoj.core.data.entity;
 
 import ac.eoj.core.data.converter.ExecutionListConverter;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import ac.eoj.proto.common.Common;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;

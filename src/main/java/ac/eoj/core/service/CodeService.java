@@ -42,7 +42,9 @@ public class CodeService {
 		Language language = cacheHolder.getLanguageMap().get(lid);
 		Assert.notNull(language);
 		Repo repo = repoDAO.findByUidAndPidAndLid(uid, pid, lid);
-		Assert.notNull(repo);
+		if (repo == null) {
+			return language.getTemplateContent();
+		}
 		Repos.FetchRepoReq req = Repos.FetchRepoReq.newBuilder()
 				.setBaseReq(Base.BaseReq.newBuilder().build())
 				.setUuid(repo.getUuid()).build();

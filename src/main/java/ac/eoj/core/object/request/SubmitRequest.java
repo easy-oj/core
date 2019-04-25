@@ -1,4 +1,4 @@
-package ac.eoj.core.web.request;
+package ac.eoj.core.object.request;
 
 import lombok.Data;
 

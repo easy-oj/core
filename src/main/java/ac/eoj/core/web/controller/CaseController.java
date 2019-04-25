@@ -1,6 +1,6 @@
 package ac.eoj.core.web.controller;
 
-import ac.eoj.core.object.CaseVO;
+import ac.eoj.core.object.response.CaseResponse;
 import ac.eoj.core.service.CaseService;
 import ac.eoj.core.web.response.ResourceResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class CaseController extends AbstractController {
 
 	@GetMapping("/case/example")
 	@ResponseBody
-	public ResourceResponse<List<CaseVO>> retrieveExampleByPid(@RequestParam("pid") Integer pid) {
+	public ResourceResponse<List<CaseResponse>> retrieveExampleByPid(@RequestParam("pid") Integer pid) {
 		return new ResourceResponse<>(caseService.retrieveExampleByPid(pid));
 	}
 }

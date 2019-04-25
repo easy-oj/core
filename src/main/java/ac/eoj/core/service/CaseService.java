@@ -1,7 +1,7 @@
 package ac.eoj.core.service;
 
 import ac.eoj.core.data.dao.CaseDAO;
-import ac.eoj.core.object.CaseVO;
+import ac.eoj.core.object.response.CaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class CaseService {
 		this.caseDAO = caseDAO;
 	}
 
-	public List<CaseVO> retrieveExampleByPid(int pid) {
-		return caseDAO.findByPidAndExampleTrue(pid).stream().map(CaseVO::new).collect(Collectors.toList());
+	public List<CaseResponse> retrieveExampleByPid(int pid) {
+		return caseDAO.findByPidAndExampleTrue(pid).stream().map(CaseResponse::new).collect(Collectors.toList());
 	}
 }

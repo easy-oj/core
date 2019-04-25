@@ -21,7 +21,6 @@
         <java.version>1.8</java.version>
         <grpc.version>1.19.0</grpc.version>
         <commons-io.version>2.6</commons-io.version>
-        <snakeyaml.version>1.24</snakeyaml.version>
     </properties>
 
     <dependencies>
@@ -113,7 +112,6 @@
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
-            <version>${snakeyaml.version}</version>
         </dependency>
 
         <!-- Database Driver Dependencies -->

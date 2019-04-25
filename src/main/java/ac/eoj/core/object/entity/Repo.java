@@ -1,4 +1,4 @@
-package ac.eoj.core.data.entity;
+package ac.eoj.core.object.entity;
 
 import lombok.Data;
 

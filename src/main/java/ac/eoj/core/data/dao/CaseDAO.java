@@ -1,6 +1,6 @@
 package ac.eoj.core.data.dao;
 
-import ac.eoj.core.data.entity.Case;
+import ac.eoj.core.object.entity.Case;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

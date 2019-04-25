@@ -1,6 +1,6 @@
 package ac.eoj.core.web.controller;
 
-import ac.eoj.core.util.exceptions.BadRequestException;
+import ac.eoj.core.object.exceptions.BadRequestException;
 import ac.eoj.core.web.WebConfiguration;
 import ac.eoj.core.web.editor.DefaultNumberEditor;
 import ac.eoj.core.web.editor.PageNumberEditor;

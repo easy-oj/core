@@ -1,6 +1,6 @@
 package ac.eoj.core.data.dao;
 
-import ac.eoj.core.data.entity.User;
+import ac.eoj.core.object.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

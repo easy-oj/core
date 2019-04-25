@@ -1,8 +1,8 @@
 package ac.eoj.core.web.controller;
 
-import ac.eoj.core.object.UserVO;
+import ac.eoj.core.object.request.RegisterRequest;
+import ac.eoj.core.object.response.UserResponse;
 import ac.eoj.core.service.RegisterService;
-import ac.eoj.core.web.request.RegisterRequest;
 import ac.eoj.core.web.response.ResourceResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +23,7 @@ public class RegisterController extends AbstractController {
 
 	@PostMapping("/register")
 	@ResponseBody
-	public ResourceResponse<UserVO> registry(@RequestBody @Valid RegisterRequest registerRequest) {
+	public ResourceResponse<UserResponse> registry(@RequestBody @Valid RegisterRequest registerRequest) {
 		return new ResourceResponse<>(registerService.register(registerRequest));
 	}
 }

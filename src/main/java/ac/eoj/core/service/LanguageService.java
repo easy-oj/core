@@ -1,7 +1,7 @@
 package ac.eoj.core.service;
 
 import ac.eoj.core.data.cache.CacheHolder;
-import ac.eoj.core.object.LanguageVO;
+import ac.eoj.core.object.response.LanguageResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ public class LanguageService {
 		this.cacheHolder = cacheHolder;
 	}
 
-	public List<LanguageVO> retrieveAll() {
-		return cacheHolder.getLanguageList().stream().map(LanguageVO::new).collect(Collectors.toList());
+	public List<LanguageResponse> retrieveAll() {
+		return cacheHolder.getLanguageList().stream().map(LanguageResponse::new).collect(Collectors.toList());
 	}
 }

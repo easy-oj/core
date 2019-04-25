@@ -1,6 +1,6 @@
 package ac.eoj.core.data.converter;
 
-import ac.eoj.core.data.entity.Problem;
+import ac.eoj.core.object.entity.Problem;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.Map;

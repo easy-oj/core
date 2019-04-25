@@ -1,8 +1,8 @@
 package ac.eoj.core.util;
 
-import ac.eoj.core.util.exceptions.ConflictException;
-import ac.eoj.core.util.exceptions.ForbiddenException;
-import ac.eoj.core.util.exceptions.NotFoundException;
+import ac.eoj.core.object.exceptions.ConflictException;
+import ac.eoj.core.object.exceptions.ForbiddenException;
+import ac.eoj.core.object.exceptions.NotFoundException;
 
 public final class Assert {
 	public static void hasAccess(boolean bool) {

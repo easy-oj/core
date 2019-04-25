@@ -1,4 +1,4 @@
-package ac.eoj.core.util.exceptions;
+package ac.eoj.core.object.exceptions;
 
 import org.springframework.http.HttpStatus;
 

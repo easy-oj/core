@@ -1,11 +1,11 @@
 package ac.eoj.core.service;
 
 import ac.eoj.core.data.dao.UserDAO;
-import ac.eoj.core.data.entity.User;
-import ac.eoj.core.object.UserVO;
+import ac.eoj.core.object.entity.User;
+import ac.eoj.core.object.enums.UserRole;
+import ac.eoj.core.object.request.RegisterRequest;
+import ac.eoj.core.object.response.UserResponse;
 import ac.eoj.core.util.Assert;
-import ac.eoj.core.util.enums.UserRole;
-import ac.eoj.core.web.request.RegisterRequest;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class RegisterService {
 		this.userDAO = userDAO;
 	}
 
-	public UserVO register(RegisterRequest registerRequest) {
+	public UserResponse register(RegisterRequest registerRequest) {
 		User user = userDAO.findByEmail(registerRequest.getEmail());
 		Assert.isNull(user);
 		user = userDAO.findByUsername(registerRequest.getUsername());
@@ -29,6 +29,6 @@ public class RegisterService {
 		BeanUtils.copyProperties(registerRequest, user, "password");
 		user.setPassword(DigestUtils.sha256Hex(registerRequest.getPassword()));
 		user.setRole(UserRole.STUDENT);
-		return new UserVO(userDAO.save(user));
+		return new UserResponse(userDAO.save(user));
 	}
 }

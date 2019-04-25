@@ -5,11 +5,11 @@ import ac.eoj.core.data.cache.CacheHolder;
 import ac.eoj.core.data.dao.ProblemDAO;
 import ac.eoj.core.data.dao.RepoDAO;
 import ac.eoj.core.data.dao.SubmissionDAO;
-import ac.eoj.core.data.entity.Language;
-import ac.eoj.core.data.entity.Repo;
-import ac.eoj.core.object.SubmissionVO;
+import ac.eoj.core.object.entity.Language;
+import ac.eoj.core.object.entity.Repo;
+import ac.eoj.core.object.request.SubmitRequest;
+import ac.eoj.core.object.response.SubmissionResponse;
 import ac.eoj.core.util.Assert;
-import ac.eoj.core.web.request.SubmitRequest;
 import ac.eoj.proto.base.Base;
 import ac.eoj.proto.repos.Repos;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +53,7 @@ public class CodeService {
 		return resp.getContentMap().getOrDefault(path, language.getTemplateContent());
 	}
 
-	public SubmissionVO submit(int uid, SubmitRequest submitRequest) {
+	public SubmissionResponse submit(int uid, SubmitRequest submitRequest) {
 		int pid = submitRequest.getPid(), lid = submitRequest.getLid();
 		Assert.notNull(problemDAO.findById(pid));
 		Language language = cacheHolder.getLanguageMap().get(lid);
@@ -66,12 +66,12 @@ public class CodeService {
 					.setBaseReq(Base.BaseReq.newBuilder().build())
 					.setUuid(repo.getUuid()).putAllContent(content).build();
 			Repos.UpdateRepoResp resp = reposClient.updateRepo(req);
-			return new SubmissionVO(submissionDAO.findById(resp.getSid()));
+			return new SubmissionResponse(submissionDAO.findById(resp.getSid()));
 		}
 		Repos.CreateRepoReq req = Repos.CreateRepoReq.newBuilder()
 				.setBaseReq(Base.BaseReq.newBuilder().build())
 				.setUid(uid).setPid(pid).setLid(lid).putAllContent(content).build();
 		Repos.CreateRepoResp resp = reposClient.createRepo(req);
-		return new SubmissionVO(submissionDAO.findById(resp.getSid()));
+		return new SubmissionResponse(submissionDAO.findById(resp.getSid()));
 	}
 }

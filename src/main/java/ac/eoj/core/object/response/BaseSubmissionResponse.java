@@ -1,6 +1,6 @@
-package ac.eoj.core.object;
+package ac.eoj.core.object.response;
 
-import ac.eoj.core.data.entity.Submission;
+import ac.eoj.core.object.entity.Submission;
 import ac.eoj.core.web.serializer.TimestampLocalDateTimeSerializer;
 import ac.eoj.proto.common.Common;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
-public class BaseSubmissionVO {
+public class BaseSubmissionResponse {
 	private Integer id;
 	private Integer uid;
 	@JsonInclude(JsonInclude.Include.NON_NULL)
@@ -24,7 +24,7 @@ public class BaseSubmissionVO {
 	private LocalDateTime submittedAt;
 	private Common.SubmissionStatus status;
 
-	public BaseSubmissionVO(Submission submission) {
+	public BaseSubmissionResponse(Submission submission) {
 		BeanUtils.copyProperties(submission, this);
 	}
 }

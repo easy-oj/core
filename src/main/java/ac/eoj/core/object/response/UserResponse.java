@@ -1,18 +1,18 @@
-package ac.eoj.core.object;
+package ac.eoj.core.object.response;
 
-import ac.eoj.core.data.entity.User;
-import ac.eoj.core.util.enums.UserRole;
+import ac.eoj.core.object.entity.User;
+import ac.eoj.core.object.enums.UserRole;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
 @Data
-public class UserVO {
+public class UserResponse {
 	private Integer id;
 	private String email;
 	private String username;
 	private UserRole role;
 
-	public UserVO(User user) {
+	public UserResponse(User user) {
 		BeanUtils.copyProperties(user, this);
 	}
 }

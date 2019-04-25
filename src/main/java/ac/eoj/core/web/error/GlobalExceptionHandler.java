@@ -1,6 +1,6 @@
 package ac.eoj.core.web.error;
 
-import ac.eoj.core.util.exceptions.ServiceException;
+import ac.eoj.core.object.exceptions.ServiceException;
 import ac.eoj.core.web.response.ErrorResponse;
 import ac.eoj.core.web.response.Response;
 import org.springframework.http.HttpStatus;

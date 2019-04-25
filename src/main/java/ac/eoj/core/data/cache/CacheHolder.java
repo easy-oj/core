@@ -1,7 +1,7 @@
 package ac.eoj.core.data.cache;
 
 import ac.eoj.core.data.dao.LanguageDAO;
-import ac.eoj.core.data.entity.Language;
+import ac.eoj.core.object.entity.Language;
 import ac.eoj.core.util.async.TaskInvoker;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;

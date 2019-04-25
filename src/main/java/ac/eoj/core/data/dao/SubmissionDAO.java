@@ -1,6 +1,6 @@
 package ac.eoj.core.data.dao;
 
-import ac.eoj.core.data.entity.Submission;
+import ac.eoj.core.object.entity.Submission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;

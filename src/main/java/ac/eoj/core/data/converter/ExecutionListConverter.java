@@ -1,6 +1,6 @@
 package ac.eoj.core.data.converter;
 
-import ac.eoj.core.data.entity.Submission;
+import ac.eoj.core.object.entity.Submission;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import java.util.List;

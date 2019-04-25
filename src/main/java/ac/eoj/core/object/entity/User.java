@@ -1,6 +1,6 @@
-package ac.eoj.core.data.entity;
+package ac.eoj.core.object.entity;
 
-import ac.eoj.core.util.enums.UserRole;
+import ac.eoj.core.object.enums.UserRole;
 import lombok.Data;
 
 import javax.persistence.*;

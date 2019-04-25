@@ -1,16 +1,16 @@
-package ac.eoj.core.object;
+package ac.eoj.core.object.response;
 
-import ac.eoj.core.data.entity.Case;
+import ac.eoj.core.object.entity.Case;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
 @Data
-public class CaseVO {
+public class CaseResponse {
 	private Integer id;
 	private String input;
 	private String output;
 
-	public CaseVO(Case _case) {
+	public CaseResponse(Case _case) {
 		BeanUtils.copyProperties(_case, this);
 	}
 }

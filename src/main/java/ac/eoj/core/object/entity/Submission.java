@@ -1,4 +1,4 @@
-package ac.eoj.core.data.entity;
+package ac.eoj.core.object.entity;
 
 import ac.eoj.core.data.converter.ExecutionListConverter;
 import ac.eoj.proto.common.Common;

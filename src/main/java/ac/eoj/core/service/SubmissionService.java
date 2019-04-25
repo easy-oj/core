@@ -2,10 +2,10 @@ package ac.eoj.core.service;
 
 import ac.eoj.core.data.dao.SubmissionDAO;
 import ac.eoj.core.data.dao.UserDAO;
-import ac.eoj.core.data.entity.Submission;
-import ac.eoj.core.data.entity.User;
-import ac.eoj.core.object.BaseSubmissionVO;
-import ac.eoj.core.object.SubmissionVO;
+import ac.eoj.core.object.entity.Submission;
+import ac.eoj.core.object.entity.User;
+import ac.eoj.core.object.response.BaseSubmissionResponse;
+import ac.eoj.core.object.response.SubmissionResponse;
 import ac.eoj.core.util.Assert;
 import ac.eoj.proto.common.Common;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,14 +35,14 @@ public class SubmissionService {
 		this.userDAO = userDAO;
 	}
 
-	public SubmissionVO retrieve(int uid, int sid) {
+	public SubmissionResponse retrieve(int uid, int sid) {
 		Submission submission = submissionDAO.findById(sid);
 		Assert.notNull(submission);
 		Assert.hasAccess(uid == submission.getUid());
-		return new SubmissionVO(submission);
+		return new SubmissionResponse(submission);
 	}
 
-	public Page<BaseSubmissionVO> retrievePage(Integer uid, Integer pid, Integer lid, Common.SubmissionStatus status, int page, int limit) {
+	public Page<BaseSubmissionResponse> retrievePage(Integer uid, Integer pid, Integer lid, Common.SubmissionStatus status, int page, int limit) {
 		Pageable pageable = PageRequest.of(page, limit, PAGE_SORT);
 		Specification<Submission> specification = (Specification<Submission>) (root, query, criteriaBuilder) -> {
 			List<Predicate> predicates = new ArrayList<>();
@@ -60,11 +60,11 @@ public class SubmissionService {
 			}
 			return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
 		};
-		Page<BaseSubmissionVO> submissions = submissionDAO.findAll(specification, pageable).map(BaseSubmissionVO::new);
+		Page<BaseSubmissionResponse> submissions = submissionDAO.findAll(specification, pageable).map(BaseSubmissionResponse::new);
 		if (submissions.isEmpty()) {
 			return submissions;
 		}
-		List<Integer> userIds = submissions.stream().map(BaseSubmissionVO::getUid).distinct().collect(Collectors.toList());
+		List<Integer> userIds = submissions.stream().map(BaseSubmissionResponse::getUid).distinct().collect(Collectors.toList());
 		Map<Integer, String> idToUsername = userDAO.findAllById(userIds).stream().collect(Collectors.toMap(User::getId, User::getUsername));
 		submissions.forEach(s -> s.setUsername(idToUsername.get(s.getUid())));
 		return submissions;

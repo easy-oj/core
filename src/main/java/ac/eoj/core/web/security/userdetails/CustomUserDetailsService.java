@@ -1,7 +1,7 @@
 package ac.eoj.core.web.security.userdetails;
 
 import ac.eoj.core.data.dao.UserDAO;
-import ac.eoj.core.data.entity.User;
+import ac.eoj.core.object.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

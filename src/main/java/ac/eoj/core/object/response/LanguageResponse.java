@@ -1,11 +1,11 @@
-package ac.eoj.core.object;
+package ac.eoj.core.object.response;
 
-import ac.eoj.core.data.entity.Language;
+import ac.eoj.core.object.entity.Language;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
 @Data
-public class LanguageVO {
+public class LanguageResponse {
 	private Integer id;
 	private String name;
 	private String highlight;
@@ -15,7 +15,7 @@ public class LanguageVO {
 	private Integer timeLimit;
 	private Integer memLimit;
 
-	public LanguageVO(Language language) {
+	public LanguageResponse(Language language) {
 		BeanUtils.copyProperties(language, this);
 	}
 }

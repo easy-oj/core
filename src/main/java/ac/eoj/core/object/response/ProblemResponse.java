@@ -1,6 +1,6 @@
-package ac.eoj.core.object;
+package ac.eoj.core.object.response;
 
-import ac.eoj.core.data.entity.Problem;
+import ac.eoj.core.object.entity.Problem;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -13,12 +13,12 @@ import java.util.stream.Collectors;
 @Data
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class ProblemVO extends BaseProblemVO {
+public class ProblemResponse extends BaseProblemResponse {
 	private String description;
 	private Map<Integer, Limit> specialLimits;
-	private List<CaseVO> exampleCases;
+	private List<CaseResponse> exampleCases;
 
-	public ProblemVO(Problem problem, List<CaseVO> exampleCases) {
+	public ProblemResponse(Problem problem, List<CaseResponse> exampleCases) {
 		BeanUtils.copyProperties(problem, this);
 		this.specialLimits = problem.getSpecialLimits().entrySet().stream()
 				.collect(Collectors.toMap(Map.Entry::getKey, e -> new Limit(e.getValue())));

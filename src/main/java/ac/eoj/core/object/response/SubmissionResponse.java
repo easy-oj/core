@@ -1,6 +1,6 @@
-package ac.eoj.core.object;
+package ac.eoj.core.object.response;
 
-import ac.eoj.core.data.entity.Submission;
+import ac.eoj.core.object.entity.Submission;
 import ac.eoj.proto.common.Common;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,11 +13,11 @@ import java.util.stream.Collectors;
 @Data
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class SubmissionVO extends BaseSubmissionVO {
+public class SubmissionResponse extends BaseSubmissionResponse {
 	private String compileError;
 	private List<Execution> executions;
 
-	public SubmissionVO(Submission submission) {
+	public SubmissionResponse(Submission submission) {
 		BeanUtils.copyProperties(submission, this);
 		this.executions = submission.getExecutions().stream().map(Execution::new).collect(Collectors.toList());
 	}

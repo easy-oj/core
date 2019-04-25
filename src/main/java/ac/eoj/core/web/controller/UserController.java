@@ -1,6 +1,6 @@
 package ac.eoj.core.web.controller;
 
-import ac.eoj.core.object.UserVO;
+import ac.eoj.core.object.response.UserResponse;
 import ac.eoj.core.service.UserService;
 import ac.eoj.core.web.response.ResourceResponse;
 import ac.eoj.core.web.security.userdetails.CustomUserDetails;
@@ -21,7 +21,7 @@ public class UserController extends AbstractController {
 
 	@GetMapping("/user/current")
 	@ResponseBody
-	public ResourceResponse<UserVO> current(@AuthenticationPrincipal CustomUserDetails userDetails) {
+	public ResourceResponse<UserResponse> current(@AuthenticationPrincipal CustomUserDetails userDetails) {
 		return new ResourceResponse<>(userService.retrieve(userDetails.getId()));
 	}
 }

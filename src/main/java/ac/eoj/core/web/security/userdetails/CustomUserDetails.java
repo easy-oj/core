@@ -1,6 +1,6 @@
 package ac.eoj.core.web.security.userdetails;
 
-import ac.eoj.core.data.entity.User;
+import ac.eoj.core.object.entity.User;
 import ac.eoj.core.web.security.WebSecurityConfiguration;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;

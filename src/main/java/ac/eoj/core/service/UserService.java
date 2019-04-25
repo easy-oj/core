@@ -1,8 +1,8 @@
 package ac.eoj.core.service;
 
 import ac.eoj.core.data.dao.UserDAO;
-import ac.eoj.core.data.entity.User;
-import ac.eoj.core.object.UserVO;
+import ac.eoj.core.object.entity.User;
+import ac.eoj.core.object.response.UserResponse;
 import ac.eoj.core.util.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +16,9 @@ public class UserService {
 		this.userDAO = userDAO;
 	}
 
-	public UserVO retrieve(int uid) {
+	public UserResponse retrieve(int uid) {
 		User user = userDAO.findById(uid);
 		Assert.notNull(user);
-		return new UserVO(user);
+		return new UserResponse(user);
 	}
 }

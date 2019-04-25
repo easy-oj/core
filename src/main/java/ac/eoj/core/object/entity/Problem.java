@@ -1,4 +1,4 @@
-package ac.eoj.core.data.entity;
+package ac.eoj.core.object.entity;
 
 import ac.eoj.core.data.converter.LidLimitMapConverter;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -32,11 +32,11 @@ public class Problem {
 
 	@Basic
 	@Column(name = "submitted_count", nullable = false)
-	private Integer submittedCount;
+	private Integer submittedCount = 0;
 
 	@Basic
 	@Column(name = "accepted_count", nullable = false)
-	private Integer acceptedCount;
+	private Integer acceptedCount = 0;
 
 	@Data
 	@NoArgsConstructor

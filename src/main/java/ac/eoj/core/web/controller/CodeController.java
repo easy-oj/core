@@ -1,8 +1,8 @@
 package ac.eoj.core.web.controller;
 
-import ac.eoj.core.object.SubmissionVO;
+import ac.eoj.core.object.request.SubmitRequest;
+import ac.eoj.core.object.response.SubmissionResponse;
 import ac.eoj.core.service.CodeService;
-import ac.eoj.core.web.request.SubmitRequest;
 import ac.eoj.core.web.response.ResourceResponse;
 import ac.eoj.core.web.security.userdetails.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +30,8 @@ public class CodeController extends AbstractController {
 
 	@PostMapping("/code/submit")
 	@ResponseBody
-	public ResourceResponse<SubmissionVO> submit(@AuthenticationPrincipal CustomUserDetails userDetails,
-												 @RequestBody @Valid SubmitRequest submitRequest) {
+	public ResourceResponse<SubmissionResponse> submit(@AuthenticationPrincipal CustomUserDetails userDetails,
+													   @RequestBody @Valid SubmitRequest submitRequest) {
 		return new ResourceResponse<>(codeService.submit(userDetails.getId(), submitRequest));
 	}
 }
